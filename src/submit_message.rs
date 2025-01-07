@@ -2,12 +2,14 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-use super::{IdentifierUri, MlsMessage};
+use openmls::prelude::MlsMessageBodyOut;
+
+use super::IdentifierUri;
 
 #[repr(u8)]
 pub enum SubmitMessageRequest {
     Mls10 {
-        app_message: MlsMessage,
+        app_message: MlsMessageBodyOut, // Must be PrivateMessage
         sending_uri: IdentifierUri,
     } = 1,
 }

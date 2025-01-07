@@ -2,18 +2,20 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-use super::{GroupInfo, MlsMessage, PartialGroupInfo, ProposalRef, RatchetTreeOption, Welcome};
+use openmls::prelude::{group_info::GroupInfo, hash_ref::ProposalRef, MlsMessageBodyOut, Welcome};
+
+use crate::{PartialGroupInfo, RatchetTreeOption};
 
 pub enum HandshakeBundle {
     Commit {
-        proposal_or_commit: MlsMessage, // TODO: This must be a commit. Can we make this type safe?
+        proposal_or_commit: MlsMessageBodyOut, // TODO: This must be a commit. Can we make this type safe?
         welcome: Option<Welcome>,
         group_info_option: GroupInfoOption,
         ratchet_tree_option: RatchetTreeOption,
     },
     Proposal {
-        proposal_or_commit: MlsMessage, // This must be a proposal
-        more_proposals: Vec<MlsMessage>,
+        proposal_or_commit: MlsMessageBodyOut, // This must be a proposal
+        more_proposals: Vec<MlsMessageBodyOut>,
     },
 }
 

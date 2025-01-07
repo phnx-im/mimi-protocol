@@ -2,37 +2,20 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+mod consent;
+mod frank;
 mod group_info;
+mod identifier_query;
 mod key_material;
 mod notify;
+mod report_abuse;
 mod submit_message;
 mod update;
 
-// TODO: Import this from mls crate
-#[repr(u16)]
-pub enum CipherSuite {
-    Reserved = 0,
-    MLS_128_DHKEMX25519_AES128GCM_SHA256_Ed25519 = 1,
-    Custom(u16),
-}
-// TODO: Import this from mls crate
-pub type RequiredCapabilities = ();
-// TODO: Import this from mls crate
-pub type Capabilities = ();
-// TODO: Import this from mls crate
-pub type KeyPackage = ();
-// TODO: Import this from mls crate
-pub type MlsMessage = ();
-// TODO: Import this from mls crate
-pub type Welcome = ();
-// TODO: Import this from mls crate
-pub type GroupInfo = ();
-// TODO: Import this from mls crate
-pub type PartialGroupInfo = ();
-// TODO: Import this from mls crate
-pub type RatchetTreeOption = ();
-// TODO: Import this from mls crate
-pub type ProposalRef = ();
+// TODO: openmls doesn't implement this yet?
+// https://datatracker.ietf.org/doc/draft-mahy-mls-ratchet-tree-options/
+type RatchetTreeOption = ();
+type PartialGroupInfo = ();
 
 #[repr(u8)]
 pub enum Protocol {

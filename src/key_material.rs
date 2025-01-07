@@ -2,7 +2,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-use super::{Capabilities, CipherSuite, IdentifierUri, KeyPackage, RequiredCapabilities};
+use openmls::prelude::{Capabilities, Ciphersuite, KeyPackage, RequiredCapabilitiesExtension};
+
+use super::IdentifierUri;
 
 #[repr(u8)]
 pub enum KeyMaterialRequest {
@@ -10,8 +12,8 @@ pub enum KeyMaterialRequest {
         requesting_user: IdentifierUri,
         target_user: IdentifierUri,
         room_id: IdentifierUri,
-        acceptable_ciphersuites: Vec<CipherSuite>,
-        required_capabilities: RequiredCapabilities,
+        acceptable_ciphersuites: Vec<Ciphersuite>,
+        required_capabilities: RequiredCapabilitiesExtension,
     } = 1,
 }
 

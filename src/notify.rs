@@ -2,23 +2,19 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-use super::{MlsMessage, RatchetTreeOption};
+use openmls::prelude::MlsMessageBodyOut;
 
-struct Frank {
-    franking_tag: [u8; 32], // TODO: The RFC starts mixing camelCase and snake_case
-    server_frank: [u8; 32],
-    server_frank_context_hash: [u8; 32],
-}
+use crate::{frank::Frank, RatchetTreeOption};
 
-enum Mls10FanoutMessage {
+pub enum Mls10FanoutMessage {
     Application {
         timestamp: u64,
-        message: MlsMessage,  // Must have wire_format = Application
-        frank: Option<Frank>, // In RFC, optional doesn't have the <>
+        message: MlsMessageBodyOut, // Must have wire_format = Application
+        frank: Option<Frank>,       // TODO: In RFC, optional doesn't have the <>
     },
     Welcome {
         timestamp: u64,
-        message: MlsMessage, // Must have wire_format = Welcome
+        message: MlsMessageBodyOut, // Must have wire_format = Welcome
         ratchet_tree_option: RatchetTreeOption,
     },
 }

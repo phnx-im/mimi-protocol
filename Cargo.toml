@@ -8,4 +8,5 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+openmls = "0.6.0"
 serde_bytes = "0.11.15"
